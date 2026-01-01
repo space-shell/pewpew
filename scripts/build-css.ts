@@ -1,15 +1,14 @@
 #!/usr/bin/env -S deno run --allow-read --allow-write --allow-run --allow-env
 
 /**
- * Build CSS using Tailwind CLI via npx
+ * Build CSS using Tailwind CLI
  * This script is used during development and production builds
  */
 
 const isDev = Deno.args.includes("--watch");
 
-const command = new Deno.Command("npx", {
+const command = new Deno.Command("tailwindcss", {
   args: [
-    "tailwindcss",
     "-i",
     "./src/styles/index.css",
     "-o",

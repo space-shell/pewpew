@@ -13,17 +13,18 @@
     "alwaysStrict": true
   },
   "imports": {
-    "solid-js": "https://esm.sh/solid-js@1.9.3",
-    "solid-js/web": "https://esm.sh/solid-js@1.9.3/web",
-    "solid-js/store": "https://esm.sh/solid-js@1.9.3/store",
+    "solid-js": "https://esm.sh/solid-js@1.9.3?target=es2020&external=solid-js",
+    "solid-js/web": "https://esm.sh/solid-js@1.9.3/web?target=es2020",
+    "solid-js/store": "https://esm.sh/solid-js@1.9.3/store?target=es2020",
+    "solid-js/jsx-runtime": "https://esm.sh/solid-js@1.9.3/jsx-runtime?target=es2020",
     "rxjs": "https://esm.sh/rxjs@7.8.1",
     "rxjs/operators": "https://esm.sh/rxjs@7.8.1/operators",
     "ramda": "https://esm.sh/ramda@0.30.1",
     "@types/ramda": "https://esm.sh/@types/ramda@0.30.2"
   },
   "tasks": {
-    "dev": "deno run --allow-net --allow-read --allow-env --watch dev.ts",
-    "build": "deno run --allow-read --allow-write --allow-env --allow-net build.ts",
+    "dev": "deno run --allow-net --allow-read --allow-env --allow-run --watch dev.ts",
+    "build": "deno run --allow-read --allow-write --allow-env --allow-net --allow-run build.ts",
     "preview": "deno run --allow-net --allow-read static-server.ts",
     "lint": "deno lint src/",
     "fmt": "deno fmt src/",

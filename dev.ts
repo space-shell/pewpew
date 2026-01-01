@@ -2,9 +2,9 @@
 
 import { serveDir } from "https://deno.land/std@0.224.0/http/file_server.ts";
 
-const PORT = 8000;
+const PORT = 5173;
 
-console.log(`Starting development server on http://localhost:${PORT}`);
+console.log(`Starting development server on http://0.0.0.0:${PORT}`);
 console.log("Building CSS with Tailwind...");
 
 // Start Tailwind CSS build in watch mode
@@ -15,7 +15,7 @@ const tailwindProcess = new Deno.Command("deno", {
 }).spawn();
 
 // Simple dev server
-Deno.serve({ port: PORT }, async (req) => {
+Deno.serve({ port: PORT, hostname: "0.0.0.0" }, async (req) => {
   const url = new URL(req.url);
 
   // Serve from public directory

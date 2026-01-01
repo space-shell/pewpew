@@ -1,6 +1,5 @@
 import { render } from "solid-js/web";
 import App from "./App.tsx";
-import "./styles/index.css";
 
 // Register service worker
 if ("serviceWorker" in navigator) {

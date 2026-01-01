@@ -20,6 +20,7 @@ const cssProcess = new Deno.Command("deno", {
   stdout: "inherit",
   stderr: "inherit",
 });
+
 const cssResult = await cssProcess.output();
 if (!cssResult.success) {
   console.error("CSS build failed");
@@ -30,7 +31,9 @@ if (!cssResult.success) {
 console.log("Building JavaScript...");
 try {
   await esbuild.build({
-    plugins: [...denoPlugins()],
+    plugins: [...denoPlugins({
+      configPath: `${Deno.cwd()}/deno.json`,
+    })],
     entryPoints: ["./src/main.tsx"],
     outfile: "./public/dist/main.js",
     bundle: true,
@@ -38,10 +41,13 @@ try {
     sourcemap: true,
     target: "es2020",
     format: "esm",
-    jsx: "automatic",
-    jsxImportSource: "solid-js",
+    platform: "browser",
+    conditions: ["browser", "development"],
     define: {
       "process.env.NODE_ENV": '"production"',
+      "import.meta.env.SSR": "false",
+      "import.meta.env.DEV": "false",
+      "_$ISSERVER": "false",
     },
   });
 

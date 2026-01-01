@@ -34,15 +34,16 @@ direnv allow
 
 The Nix shell provides:
 - Deno (latest)
-- Node.js 20 + npm (for Tailwind, ESLint, Prettier)
-- Git and useful utilities (jq, curl, watchexec)
+- Tailwind CSS v4 (native binary)
+- ESLint (native binary)
+- Prettier (native binary)
 
 ### Manual Setup (Alternative)
 
 If not using Nix:
 1. Install [Deno](https://deno.land/) (v1.40+)
-2. Install [Node.js](https://nodejs.org/) (v20+)
-3. Run `npm install` for dev dependencies
+2. Install [Tailwind CSS](https://tailwindcss.com/) standalone CLI
+3. Install [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/) globally or locally
 
 ## Development Commands
 
@@ -66,26 +67,26 @@ Serves production build on http://localhost:8080.
 
 ### Code Quality
 ```bash
-# Deno native tools (preferred)
+# Deno native tools
 deno task lint        # Lint TypeScript files
 deno task fmt         # Format code
 deno task fmt:check   # Check formatting
 deno task check       # Type check main.tsx
 
-# Node-based tools (requires npm install first)
-npm run lint          # ESLint
-npm run lint:fix      # ESLint with auto-fix
-npm run format        # Prettier
-npm run format:check  # Check Prettier formatting
+# Nix-provided tools (available in dev shell)
+eslint src/           # ESLint
+eslint --fix src/     # ESLint with auto-fix
+prettier --write .    # Format with Prettier
+prettier --check .    # Check Prettier formatting
 ```
 
 ## Architecture
 
 ### Dependency Management
-- All dependencies are managed via **import maps** in `deno.json`
+- All runtime dependencies are managed via **import maps** in `deno.json`
 - Uses CDN imports (esm.sh) for all packages
 - No node_modules - pure Deno approach
-- NPM tools (Tailwind, ESLint, Prettier) run via npx when needed
+- Development tools (Tailwind CSS, ESLint, Prettier) provided by Nix flake
 
 ### Build Process
 1. **CSS Build**: Tailwind CLI processes `src/styles/index.css` → `public/styles/output.css`
@@ -227,7 +228,7 @@ Create `public/_headers` and `public/_redirects` files if needed for custom Clou
 ## Important Notes
 
 - **No node_modules**: This project uses Deno with import maps exclusively
-- **NPM tools via npx**: Tailwind, ESLint, Prettier run through npx (require npm install for devDependencies)
+- **Nix-native tools**: Tailwind CSS, ESLint, and Prettier are provided as native binaries via Nix flake
 - **JSX Transform**: Uses SolidJS's JSX transform, not React
 - **Service Worker**: Lives in public/ and is not bundled - edit directly
 - **Hot Reload**: Development server watches files, Tailwind watches CSS
