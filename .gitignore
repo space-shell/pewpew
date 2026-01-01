@@ -2,9 +2,11 @@
 node_modules/
 
 # Build outputs
-dist/
-public/dist/
-public/styles/output.css
+# Temporarily committing build files for deployment
+# Only ignore dist/ in root, not in public/
+/dist/
+# public/dist/
+# public/styles/output.css
 
 # Environment variables
 .env
