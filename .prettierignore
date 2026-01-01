@@ -1,0 +1,4 @@
+dist/
+public/styles/
+*.min.js
+*.min.css

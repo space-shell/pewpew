@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+public/dist/
+public/styles/output.css
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Editor directories
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Cloudflare
+.wrangler/
+wrangler.toml.local
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+
+# Nix
+.deno/
+.direnv/
+result
+result-*

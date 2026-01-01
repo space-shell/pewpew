@@ -1,0 +1,57 @@
+{
+  "compilerOptions": {
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "lib": ["deno.window", "dom", "dom.iterable"],
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true
+  },
+  "imports": {
+    "solid-js": "https://esm.sh/solid-js@1.9.3",
+    "solid-js/web": "https://esm.sh/solid-js@1.9.3/web",
+    "solid-js/store": "https://esm.sh/solid-js@1.9.3/store",
+    "rxjs": "https://esm.sh/rxjs@7.8.1",
+    "rxjs/operators": "https://esm.sh/rxjs@7.8.1/operators",
+    "ramda": "https://esm.sh/ramda@0.30.1",
+    "@types/ramda": "https://esm.sh/@types/ramda@0.30.2"
+  },
+  "tasks": {
+    "dev": "deno run --allow-net --allow-read --allow-env --watch dev.ts",
+    "build": "deno run --allow-read --allow-write --allow-env --allow-net build.ts",
+    "preview": "deno run --allow-net --allow-read static-server.ts",
+    "lint": "deno lint src/",
+    "fmt": "deno fmt src/",
+    "fmt:check": "deno fmt --check src/",
+    "check": "deno check src/main.tsx"
+  },
+  "lint": {
+    "files": {
+      "include": ["src/"]
+    },
+    "rules": {
+      "tags": ["recommended"],
+      "include": ["ban-untagged-todo", "no-throw-literal"],
+      "exclude": ["no-unused-vars"]
+    }
+  },
+  "fmt": {
+    "files": {
+      "include": ["src/", "*.ts", "*.tsx", "*.json"]
+    },
+    "options": {
+      "useTabs": false,
+      "lineWidth": 100,
+      "indentWidth": 2,
+      "semiColons": true,
+      "singleQuote": false,
+      "proseWrap": "preserve"
+    }
+  },
+  "exclude": ["dist/", "node_modules/"]
+}

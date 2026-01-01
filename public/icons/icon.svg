@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" rx="64" fill="#3b82f6"/>
+  <path d="M256 128 L384 256 L256 384 L128 256 Z" fill="#fff" opacity="0.9"/>
+  <circle cx="256" cy="256" r="48" fill="#fff"/>
+  <text x="256" y="440" font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="#fff" text-anchor="middle">PewPew</text>
+</svg>
